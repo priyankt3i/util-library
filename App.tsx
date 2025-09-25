@@ -64,6 +64,9 @@ const App: React.FC = () => {
                         {!isLaunching && ActiveComponent ? <ActiveComponent /> : null}
                     </div>
                 </div>
+                 <footer className="app-footer">
+                    Made by <a href="https://github.com/priyankt3i" target="_blank" rel="noopener noreferrer">priyankt3i</a>
+                </footer>
             </main>
         </div>
     );
