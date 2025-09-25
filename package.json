@@ -1,21 +1,21 @@
 {
-  "name": "utility-library",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "utility-library-app",
+  "version": "1.0.0",
+  "description": "A comprehensive collection of 15+ powerful and easy-to-use utility tools, designed for everyday tasks and development needs.",
+  "main": "index.html",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "serve .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
+  "keywords": [
+    "react",
+    "typescript",
+    "utilities",
+    "tools"
+  ],
+  "author": "priyankt3i",
+  "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "serve": "^14.2.3"
   }
 }
