@@ -21,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeUtility, setActiveUtility, isOp
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
-         <img src="/Logo.png" alt="Utility Library Logo" />
+         <img src="/logo.png" alt="Utility Library Logo" />
          <h1>Utility Library</h1>
       </div>
       <nav className="sidebar-nav">

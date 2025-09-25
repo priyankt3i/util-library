@@ -1,14 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import Button from '../common/Button';
 import Select from '../common/Select';
+import { jsPDF } from 'jspdf';
+import * as pdfjsLib from 'pdfjs-dist';
 
-// Add required libraries to the global window scope for TypeScript
-declare global {
-    interface Window {
-        jspdf: any;
-        pdfjsLib: any;
-    }
-}
+// Set up the worker for pdfjs-dist
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 
 type Format = 'PNG' | 'JPG' | 'PDF';
 
@@ -84,7 +81,6 @@ const FileConverter: React.FC = () => {
             }
             // Image to PDF
             else if ((fromFormat === 'PNG' || fromFormat === 'JPG') && toFormat === 'PDF') {
-                 const { jsPDF } = window.jspdf;
                  const imageUrl = await fileToDataUrl(file);
                  const img = new Image();
                  img.src = imageUrl;
@@ -105,7 +101,7 @@ const FileConverter: React.FC = () => {
                 reader.onload = async (event) => {
                     if (!event.target?.result) return;
                     const typedArray = new Uint8Array(event.target.result as ArrayBuffer);
-                    const pdf = await window.pdfjsLib.getDocument(typedArray).promise;
+                    const pdf = await pdfjsLib.getDocument(typedArray).promise;
                     const page = await pdf.getPage(1); // convert first page
                     const viewport = page.getViewport({ scale: 2.0 });
                     
