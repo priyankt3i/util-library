@@ -31,6 +31,51 @@ The library is organized into four main categories:
 ### 📝 Formatters & Validators
 - **JSON Formatter & Validator:** Format, validate, and beautify your JSON data.
 
+## 📂 Project Structure
+
+```
+.
+├── .gitignore
+├── App.tsx
+├── LICENSE
+├── README.md
+├── components
+│   ├── Sidebar.tsx
+│   ├── common
+│   │   ├── Button.tsx
+│   │   ├── ResultBox.tsx
+│   │   └── Select.tsx
+│   └── utilities
+│       ├── AgeCalculator.tsx
+│       ├── CaseConverter.tsx
+│       ├── ColorConverter.tsx
+│       ├── Counter.tsx
+│       ├── FileConverter.tsx
+│       ├── GuidGenerator.tsx
+│       ├── HashGenerator.tsx
+│       ├── JsonFormatter.tsx
+│       ├── JulianDateConverter.tsx
+│       ├── LoremIpsumGenerator.tsx
+│       ├── PasswordCrypter.tsx
+│       ├── QrCodeGenerator.tsx
+│       ├── RandomNumberGenerator.tsx
+│       ├── TimezoneConverter.tsx
+│       └── UnitConverter.tsx
+├── constants.tsx
+├── index.html
+├── index.tsx
+├── metadata.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── logo.png
+├── styles.css
+├── tsconfig.json
+├── types.ts
+├── vercel.json
+└── vite.config.ts
+```
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, TypeScript
