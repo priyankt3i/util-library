@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
+import QRCode from 'qrcode';
 import Button from '../common/Button';
-
-// Extend the Window interface to include QRCode
-declare global {
-    interface Window {
-        QRCode: any;
-    }
-}
 
 const QrCodeGenerator: React.FC = () => {
     const [text, setText] = useState('');
@@ -14,34 +8,31 @@ const QrCodeGenerator: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [isGenerating, setIsGenerating] = useState(false);
 
-    const handleGenerateClick = () => {
+    const handleGenerateClick = async () => {
         if (!text.trim()) {
             setQrCodeUrl('');
             setError('Input text cannot be empty.');
-            return;
-        }
-
-        // Check if the library is loaded at the time of action
-        if (typeof window.QRCode === 'undefined') {
-            setError('QR Code library failed to load. Please try refreshing the page.');
-            setIsGenerating(false);
             return;
         }
         
         setIsGenerating(true);
         setError(null);
         setQrCodeUrl(''); // Clear previous QR code while generating
-
-        window.QRCode.toDataURL(text, { width: 300, margin: 2, errorCorrectionLevel: 'H' }, (err: Error | null, url: string) => {
+        
+        try {
+            const url = await QRCode.toDataURL(text, {
+                width: 300,
+                margin: 2,
+                errorCorrectionLevel: 'H',
+            });
+            setQrCodeUrl(url);
+        } catch (err) {
+            console.error(err);
+            setError('Failed to generate QR Code. The input may be too long.');
+            setQrCodeUrl('');
+        } finally {
             setIsGenerating(false);
-            if (err) {
-                console.error(err);
-                setError('Failed to generate QR Code. The input may be too long.');
-                setQrCodeUrl('');
-            } else {
-                setQrCodeUrl(url);
-            }
-        });
+        }
     };
 
 
