@@ -25,36 +25,28 @@ const GuidGenerator: React.FC = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div style={{position: 'relative'}}>
+            <div>
                  <label htmlFor="guid-output" className="cyber-label">
                     Generated GUID (UUID v4)
                 </label>
-                <input
-                    id="guid-output"
-                    type="text"
-                    readOnly
-                    value={guid}
-                    className="cyber-input"
-                    style={{paddingRight: '80px', fontSize: '1.1rem'}}
-                />
-                <button
-                    onClick={copyToClipboard}
-                    style={{
-                        position: 'absolute', 
-                        top: '2.2rem', 
-                        right: '0.5rem', 
-                        padding: '0.4rem 0.8rem', 
-                        fontSize: '0.8rem', 
-                        background: 'var(--background-panel)', 
-                        color: 'var(--text-secondary)', 
-                        border: '1px solid var(--border-color)',
-                        cursor: 'pointer',
-                        borderRadius: '2px'
-                    }}
-                    disabled={!guid}
-                >
-                    {copied ? 'Copied!' : 'Copy'}
-                </button>
+                <div className="input-action-row">
+                    <input
+                        id="guid-output"
+                        type="text"
+                        readOnly
+                        value={guid}
+                        className="cyber-input"
+                        style={{fontSize: '1.1rem'}}
+                    />
+                    <button
+                        type="button"
+                        onClick={copyToClipboard}
+                        className="cyber-button cyber-button-compact"
+                        disabled={!guid}
+                    >
+                        {copied ? 'Copied!' : 'Copy'}
+                    </button>
+                </div>
             </div>
             <div>
                 <Button onClick={generateGuid}>Generate New GUID</Button>

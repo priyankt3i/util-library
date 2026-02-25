@@ -41,30 +41,22 @@ const LoremIpsumGenerator: React.FC = () => {
 
             {generatedText && (
                 <div>
-                    <div style={{position: 'relative'}}>
+                    <div>
                         <textarea
                             rows={12}
                             value={generatedText}
                             readOnly
                             className="cyber-textarea"
                         />
-                         <button 
-                            onClick={copyToClipboard}
-                            style={{
-                                position: 'absolute', 
-                                top: '0.75rem', 
-                                right: '0.75rem', 
-                                padding: '0.4rem 0.8rem', 
-                                fontSize: '0.8rem', 
-                                background: 'var(--background-panel)', 
-                                color: 'var(--text-secondary)', 
-                                border: '1px solid var(--border-color)',
-                                cursor: 'pointer',
-                                borderRadius: '2px'
-                            }}
-                         >
-                            {copied ? 'Copied!' : 'Copy'}
-                         </button>
+                        <div className="textarea-action-row">
+                            <button
+                                type="button"
+                                onClick={copyToClipboard}
+                                className="cyber-button cyber-button-compact"
+                            >
+                                {copied ? 'Copied!' : 'Copy'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
