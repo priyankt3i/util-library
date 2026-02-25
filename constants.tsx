@@ -95,6 +95,12 @@ const ArrowPathIcon: React.FC<{ className?: string }> = ({ className = "h-6 w-6"
     </svg>
 );
 
+const ArrowsRightLeftIcon: React.FC<{ className?: string }> = ({ className = "h-6 w-6" }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 15L21 11.25m0 0L17.25 7.5M21 11.25H9m-2.25-3L3 12m0 0l3.75 3.75M3 12h12" />
+    </svg>
+);
+
 
 // Lazy Loaded Components
 const AgeCalculator = React.lazy(() => import('./components/utilities/AgeCalculator'));
@@ -112,6 +118,7 @@ const TimezoneConverter = React.lazy(() => import('./components/utilities/Timezo
 const JsonFormatter = React.lazy(() => import('./components/utilities/JsonFormatter'));
 const GuidGenerator = React.lazy(() => import('./components/utilities/GuidGenerator'));
 const FileConverter = React.lazy(() => import('./components/utilities/FileConverter'));
+const TextCompare = React.lazy(() => import('./components/utilities/TextCompare'));
 
 
 // Component Wrapper for Suspense
@@ -243,6 +250,14 @@ export const UTILITIES: Utility[] = [
         description: 'Format, validate, and beautify your JSON data.',
         icon: CodeBracketIcon,
         component: () => SuspenseWrapper(JsonFormatter),
+        category: 'Formatters & Validators',
+    },
+    {
+        id: 'text-compare',
+        name: 'Compare Text',
+        description: 'Compare pasted text against actual text with aligned side-by-side differences.',
+        icon: ArrowsRightLeftIcon,
+        component: () => SuspenseWrapper(TextCompare),
         category: 'Formatters & Validators',
     },
 ];
